@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student</title>
+</head>
+<body>
+<div class="features">
+    <h1>Students</h1>
+    {% for el in student %}
+    <div class="alert alert-warning">
+        <h3>{{el.name}}</h3>
+        <p>{{el.surname}}</p>
+        <p>{{el.age}}</p>
+    </div>
+    <a href="{% url 'main:update_student' el.id %}">
+        <button class="btn btn-success" type="submit">Update</button>
+    </a>
+    <a href="{% url 'main:delete_student' el.id %}">
+        <button class="btn btn-success" type="submit">Delete</button>
+    </a>
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+
+    <a href="{% url 'main:create_student' %}">
+        <button class="btn btn-success" type="submit">Add new Student</button>
+    </a>
+</div>
+</body>
+</html>

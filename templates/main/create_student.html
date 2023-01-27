@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="features">
+    <h1>Add students</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.name}}<br>
+        {{form.surname}}<br>
+        {{form.age}}<br>
+        <button class="btn btn-success" type="submit">Добавить</button>
+    </form>
+</div>
+</body>
+</html>
