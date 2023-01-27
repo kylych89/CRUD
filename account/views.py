@@ -11,7 +11,7 @@ def register_user(request):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return redirect('account:login')
+            return redirect('account:login_user')
         return HttpResponse('Invalid form!!!')
     form = RegisterForm()
 
@@ -30,5 +30,16 @@ def login_user(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                return redirect("main:index")
+            return HttpResponse('User not found!!!')
+        return HttpResponse('Invalid form!!!')
+    form = LoginForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'account/login.html', context)
 
 
+def logout_user(request):
+    logout(request)
+    return redirect('account:login_user')
